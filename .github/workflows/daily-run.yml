@@ -23,14 +23,10 @@ jobs:
           pip install requests beautifulsoup4 python-dotenv
 
       - name: 🔐 Inject environment variables
-        env:
-          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
-          EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
-          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         run: |
-          echo "EMAIL_SENDER=${EMAIL_SENDER}" >> .env
-          echo "EMAIL_RECEIVER=${EMAIL_RECEIVER}" >> .env
-          echo "EMAIL_PASSWORD=${EMAIL_PASSWORD}" >> .env
+          echo "EMAIL_SENDER=${{ secrets.EMAIL_SENDER }}" >> .env
+          echo "EMAIL_RECEIVER=${{ secrets.EMAIL_RECEIVER }}" >> .env
+          echo "EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}" >> .env
 
       - name: 🚀 Run tracker
         run: python3 internship_tracker.py
